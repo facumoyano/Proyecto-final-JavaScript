@@ -256,6 +256,14 @@ main {
   transition: 0.6s;
 
 }
+.comprarButton {
+  padding: 1rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  border-radius: 10px;
+  background-color: #fff;
+  border: none;
+}
 /* Form */
 .form {
   position: fixed;
@@ -316,6 +324,14 @@ input {
   font-size: 1.4rem;
   color: rgb(211, 11, 11);
   padding-top: 1.2rem;
+}
+#btn-form {
+  padding: 1rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  background-color: #fff;
+  border: 1px solid grey;
+  border-radius: 10px;
 }
 
 @media only screen and (max-width: 768px) {
