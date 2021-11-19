@@ -41,7 +41,7 @@ agregarProductoBoton.forEach((addBtn) => {
 });
 
 const comprarButton = document.querySelector('.comprarButton');
-comprarButton.addEventListener('click', mostrarmsj);
+comprarButton.addEventListener('click', mostrarMsj);
 
 const contenedorProductos = document.querySelector(
   '.shoppingCartItemsContainer'
@@ -176,10 +176,21 @@ let mayor = document.getElementById("form-check");
 let btnForm = document.getElementById("btn-form");
 let formulario = document.getElementById("form");
 
-function mostrarmsj() {  
+function mostrarMsj() {  
   total = actualizarTotalCarrito();
+  
   btnForm.addEventListener('click', function(e) {
   e.preventDefault();
+  if(nombre.value === "") {
+    alert("Ingresa tu nombre");
+    nombre.focus();
+    return false;
+  }
+  if(email.value === "") {
+    alert("Ingresa un email");
+    email.focus();
+    return false;
+  }
   if(mayor.checked) {
     const addMsj = document.createElement("div");
     addMsj.classList.add("form-msj");
@@ -199,6 +210,8 @@ function mostrarmsj() {
     
 
 })}
+
+
 }
 })
 })
