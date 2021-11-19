@@ -1,0 +1,20 @@
+[
+    {
+        "id":1, "nombre": "El enemigo", "precio": 2273, "stock": true, "imagen": "img/foto1.jpeg"
+    },
+    {
+        "id":2, "nombre": "Salentein", "precio": 1980,"stock": true, "imagen": "img/foto2.jpeg"
+    },
+    {
+        "id":3, "nombre": "Alamos","precio": 755, "stock": true, "imagen": "img/foto3.jpeg"
+    },
+    {
+        "id":4,"nombre": "Rutini","precio": 2637,"stock": true,"imagen": "img/foto4.jpeg"
+    },
+    {
+        "id":5,"nombre": "Enzo bianchi","precio": 8327,"stock": true,"imagen": "img/foto5.jpeg"
+    },
+    {
+        "id":6,"nombre": "Catena","precio": 3933,"stock": true,"imagen": "img/foto6.jpeg"
+    }
+]

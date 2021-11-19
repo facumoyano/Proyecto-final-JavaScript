@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Raleway:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Lorem Wines</title>
+  </head>
+  <body>
+    <header class="fondo">
+      <nav class="navbar fixed">
+        <ul>
+          <li>
+            <a href="#" class="logo">lorem <span class="span">WINES</span></a>
+          </li>
+          <li>
+            <a href="#" id="openShop"><i class="fas fa-shopping-cart icon"></i></a>
+          </li>
+        </ul>
+      </nav>
+      <div class="titulo">
+        <h1>
+          Bienvenido a <br />
+          lorem <span class="span">wines</span>
+        </h1>
+        <button><a href="#card"> Ver productos</a></button>
+      </div>
+    </header>
+
+    <main>
+      <section class="container" id="card">
+       
+      </section>
+      
+    <section class="shopping-cart"  id="sidebar">
+      <div id="cerrarCarrito">
+        <p>Cerrar</p>
+      </div>
+      <div class=".shoppingCartItemsContainer">
+          <h1 class="text-center">CARRITO</h1>
+          <hr>
+          <div class="carroTitulos">
+              <div>
+                  <div>
+                      <h6>Producto</h6>
+                  </div>
+              </div>
+              <div>
+                  <div>
+                      <h6>Precio</h6>
+                  </div>
+              </div>
+              <div>
+                  <div>
+                      <h6>Cantidad</h6>
+                  </div>
+              </div>
+          </div>
+          
+          <div class="shoppingCartItemsContainer" id="shop">
+          </div>
+         
+          <div class="row">
+              <div class="totalFlex">
+                  <div class="contenedorTotal">
+                      <p class="totalCarrito">Total</p>
+                      <p class="totalCarrito shoppingCartTotal">$0</p>
+                          </div>
+                          
+                      </div>
+                      <button class="comprarButton" type="button"
+                          data-target="#comprarModal" id="openForm">Comprar</button>
+                  </div>
+              </div>
+          </div>
+          </section>
+          
+  
+    </main>
+
+    <form class="form" >
+      <div class="form-container" id="form">
+        <div class="form-close">
+          Cerrar
+        </div>
+        <label for="">Nombre</label>
+        <input type="text" placeholder="Ingresa tu nombre" required id="form-nombre">
+        <label for="">Email</label>
+        <input type="email" placeholder="Ingresa tu email" required id="form-email">
+        <label for="">Eres mayor de edad? </label>
+        <input type="checkbox" required id="form-check">
+        <button type="button" id="btn-form">Enviar</button>
+      </div>
+    </form>
+    
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+    <script
+      src="https://kit.fontawesome.com/15bdec4e03.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/Producto.js"></script>
+    <script src="js/Usuario.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

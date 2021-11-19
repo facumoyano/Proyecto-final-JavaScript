@@ -1,0 +1,353 @@
+html {
+  font-size: 62.5%;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Raleway", sans-serif;
+}
+.navbar ul {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 2rem;
+  list-style: none;
+}
+.navbar {
+  background-color: #000;
+}
+.fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.navbar ul a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 3rem;
+  font-weight: 700;
+}
+.logo {
+  border: 3px solid #c6635e;
+  padding: 10px;
+}
+.fas {
+  font-size: 2.5rem;
+}
+.fondo {
+  background-image: url("img/red-wine.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 100vh;
+  min-height: 600px;
+}
+.titulo {
+  font-weight: 700;
+  font-size: 3rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+  width: 50%;
+  padding-top: 20%;
+}
+.titulo button {
+  border: 1px solid #fff;
+  text-decoration: none;
+  background-color: transparent;
+  color: #fff;
+  border-radius: 20px;
+  padding: 15px 40px;
+  width: 50%;
+  margin-top: 5%;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+.titulo button a{
+  text-decoration: none;
+  color: #fff;
+}.titulo button a:hover{
+  color: #c6635e;
+}
+.span {
+  color: #c6635e;
+}
+.titulo button:hover {
+  color: #c6635e;
+  border: 1px solid #c6635e;
+}
+main {
+  background-color: #f0f0f0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+.card {
+  margin: 10%;
+  background-color: #ffffff;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  transition: all 400ms ease;
+}
+.card:hover {
+  box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.4);
+}
+.card-image img {
+  width: 100%;
+  height: 30rem;
+  object-fit: cover;
+}
+.card-nombreProducto {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.2rem;
+}
+.card-contenedor-precio {
+  display: flex;
+  justify-content: center;
+  margin: 20px 40px;
+}
+.card-agregarProducto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.agregarProducto {
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  border: none;
+  margin: 20px 40px;
+  padding: 20px 70px;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: #000;
+  color: #fff;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+.agregarProducto:hover {
+  background-color: #a5292a;
+}
+.card-precio {
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-transform: uppercase;
+  color: #c6635e;
+  font-weight: 700;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.shoppingCartItemsContainer {
+  width: 100%;
+}
+.contenedor {
+  display: flex;
+  justify-content: space-between;
+}
+.text-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+}
+.carroTitulos {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 2rem;
+  font-size: 2.5rem;
+}
+.carroProducto {
+  display: flex;
+  margin: 2rem 2rem;
+}
+.shopping-cart-image{
+  width: 100px;
+  border-radius: 2rem;
+}
+.shoppingCartItem{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem;
+}
+.carroProducto p {
+  display: flex;
+  align-items: center;
+  margin-left: 2rem;
+  font-size: 1.6rem;
+}
+.carroPrecio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+}
+.carroCantidad {
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+}
+.carroTotal {
+  font-size: 1.6rem;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 2rem 0;
+  padding-bottom: 3rem;
+}
+.shopping-cart-item{
+  display: flex;
+  flex-direction: column;
+}
+.shopping-cart-item-title{
+  font-size: 1.6rem;
+  margin-left: 1rem;
+}
+.shoppingCartItemPrice {
+  font-size: 1.6rem;
+}
+.shoppingCartItemQuantity {
+  width: 4rem;
+}
+.contenedorTotal {
+  font-size: 1.4rem;
+}
+.totalCarrito {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+#cerrarCarrito {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem;
+}
+#cerrarCarrito p{
+  font-size: 1.6rem;
+  color: #fff;
+  cursor: pointer;
+}
+#sidebar {
+  background-color: #000000;
+  color: #ffffff;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  right: -100%;
+  top: 0;
+  overflow-y: scroll;
+  transition: 0.6s;
+
+}
+/* Form */
+.form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #111111bd;
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transition: .6s;
+  
+}
+.form-show {
+  opacity: 1;
+  pointer-events: unset;
+  transition: .6s;
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90%;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 2rem;
+}
+label {
+  padding: 2rem 0 1rem 0;
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+input {
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid gray;
+}
+#btn-form {
+  margin-top: 1rem;
+}
+.form-close {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+.form-msj {
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: rgb(53, 148, 34);
+  padding-top: 1.2rem;
+}
+.form-msj-negativo {
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: rgb(211, 11, 11);
+  padding-top: 1.2rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar ul a{
+    font-size: 2rem;
+  }
+  .titulo {
+    font-size: 2.5rem;
+    padding-top: 30%;
+  }
+  .titulo button {
+    width: 100%;
+   }
+  .titulo button a{
+    font-size: 1.8rem;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .titulo {
+    font-size: 2rem;
+    padding-top: 40%;
+  }
+  .titulo button {
+   width: 100%;
+   margin-top: 4rem;
+  }
+}
+
