@@ -1,4 +1,21 @@
+//Creo mis variables para luego obtener información de ellas
 
+let nombre = document.getElementById("form-nombre");
+let email = document.getElementById("form-email");
+let mayor = document.getElementById("form-check");
+let btnForm = document.getElementById("btn-form");
+let formulario = document.getElementById("form");
+const contenedorProductos = document.querySelector(
+  '.shoppingCartItemsContainer'
+);
+const openForm = document.querySelector("#openForm");
+const form = document.querySelector(".form");
+const closeForm = document.querySelector(".form-close");
+const closeModal = document.querySelector("#cerrar-modal");
+const modal = document.querySelector(".modal-contenedor");
+
+
+//Creo mis cards de forma dinámica mediante AJAX llamando a un json local.
 
 $(document).ready(() => {
   const url = "js/productos.json";
@@ -34,20 +51,23 @@ $(document).ready(() => {
       }
     
 
+// Selecciono el boton de agregar producto y llamo a la función addProductClicked que lee la información de las cards
 
 const agregarProductoBoton = document.querySelectorAll('.agregarProducto');
 agregarProductoBoton.forEach((addBtn) => {
-  addBtn.addEventListener('click', addProductClicked);
+  addBtn.addEventListener('click', datosCard);
 });
 
+// Selecciono el botón de compra de carrito y luego llamo a la función validarForm
+
 const comprarButton = document.querySelector('.comprarButton');
-comprarButton.addEventListener('click', mostrarMsj);
+comprarButton.addEventListener('click', validarForm);
 
-const contenedorProductos = document.querySelector(
-  '.shoppingCartItemsContainer'
-);
 
-function addProductClicked(event) {
+
+//Función que lee el contenido de las cards para luego usar la información obtenida en el carrito
+
+function datosCard(event) {
   const button = event.target;
   const item = button.closest('.card');
 
@@ -58,6 +78,8 @@ function addProductClicked(event) {
   addProductToShop(itemTitle, itemPrice, itemImage);
 }
 
+//Función que añade los productos al carrito de compras
+
 function addProductToShop(itemTitle, itemPrice, itemImage) {
   const productTitle = contenedorProductos.getElementsByClassName(
     'shoppingCartItemTitle'
@@ -67,10 +89,13 @@ function addProductToShop(itemTitle, itemPrice, itemImage) {
       let cantidadElemento = productTitle[i].parentElement.parentElement.parentElement.querySelector('.shoppingCartItemQuantity');
       cantidadElemento.value++;
       
+      //Actualizo el total del carrito
       actualizarTotalCarrito();
       return;
     }
   }
+
+  // Creo los elementos del carrito dinámicamente
 
   const addElements = document.createElement('div');
   const contenidoProducto = `
@@ -100,13 +125,17 @@ function addProductToShop(itemTitle, itemPrice, itemImage) {
   addElements.innerHTML = contenidoProducto;
   contenedorProductos.append(addElements);
 
+  //Selecciono el botón para eliminar productos del carrito y luego llamo a la función removerProducto
   addElements.querySelector('.buttonDelete').addEventListener('click', removerProducto);
 
+  //Selecciono el input de la cantidad del producto y luego llamo a la función cantidad elegida
   addElements.querySelector('.shoppingCartItemQuantity').addEventListener('change', cantidadElegida);
 
+  //Actualizo el total del carrito
   actualizarTotalCarrito();
 }
 
+//Función que me devuelve el total de los productos elegidos en el carrito
 function actualizarTotalCarrito() {
   let total = 0;
   const precioTotal = document.querySelector('.shoppingCartTotal');
@@ -124,21 +153,23 @@ function actualizarTotalCarrito() {
   
 }
 
+//Función para eliminar productos del carrito
 function removerProducto(event) {
   const buttonClicked = event.target;
   buttonClicked.closest('.shoppingCartItem').remove();
   actualizarTotalCarrito();
 }
-
+//Función para que el usuario no pueda elegir un número negativo
 function cantidadElegida(event) {
   const input = event.target;
   if (input.value <= 0){
     input.value = 1;
   }
+  //Actualizo el total del carrito
   actualizarTotalCarrito();
 }
 
-
+//Utlizo jquery para abrir el carrito de compras
 
 $('#openShop').click(function(e) {
   e.preventDefault();
@@ -146,39 +177,28 @@ $('#openShop').click(function(e) {
 
 })
 
+//Utlizo jquery para cerrar el carrito de compras
 $('#cerrarCarrito').click(function(e) {
   e.preventDefault();
   $('#sidebar').css('right', "-100%")
 })
 
-const openForm = document.querySelector("#openForm");
-const form = document.querySelector(".form");
-const closeForm = document.querySelector(".form-close");
-const closeModal = document.querySelector("#cerrar-modal");
-const modal = document.querySelector(".modal-contenedor");
-
-
-  
-    
-
+//Utilizo jquery para que al hacer click en comprar se muestre el formulario
 openForm.addEventListener('click', (e) => {
   e.preventDefault();
   form.classList.add('form-show');
 })
 
+//Utilizo jquery para cerrar el formulario
 closeForm.addEventListener('click', (e) => {
   e.preventDefault();
   form.classList.remove('form-show');
 })
 
 
-let nombre = document.getElementById("form-nombre");
-let email = document.getElementById("form-email");
-let mayor = document.getElementById("form-check");
-let btnForm = document.getElementById("btn-form");
-let formulario = document.getElementById("form");
+// VALIDO EL FORMULARIO, Y MUESTRO UN MENSAJE SEGÚN SI EL USUARIO ES MAYOR O MENOR DE EDAD
 
-function mostrarMsj() {  
+function validarForm() {  
   total = actualizarTotalCarrito();
   
   btnForm.addEventListener('click', function(e) {
@@ -209,11 +229,35 @@ function mostrarMsj() {
     contenedorProductos.innerHTML = '';
     precioTotal.innerHTML = '$0';
 
-    
 
 })}
 
+//GUARDO EL CLIENTE INGRESADO EN EL FORMULARIO EN EL LOCALSTORAGE
 
+function guardarUsuario (usuario){
+  btnForm.addEventListener('click', (e)=>{
+    e.preventDefault();
+    let usuario = new Usuario(nombre.value, email.value, mayor.checked);
+    let item = localStorage.getItem("listaUsuarios");
+  if (item){
+
+    let almacenados = JSON.parse(localStorage.getItem("listaUsuarios"));
+    almacenados.push(usuario);
+
+    let almacenados_string = JSON.stringify(almacenados);
+    localStorage.setItem("listaUsuarios",almacenados_string);
+
+  }else{
+
+    let almacenados = new Array();
+    almacenados.push(usuario);
+    let almacenados_string = JSON.stringify(almacenados);
+    localStorage.setItem("listaUsuarios",almacenados_string);
+  }
+  })
+}
+guardarUsuario ();
+  
 }
 })
 })
