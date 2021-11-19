@@ -345,6 +345,57 @@ input {
   border-radius: 10px;
 }
 
+/* Modal */
+.modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #111111bd;
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transition: .6s;
+
+  
+}
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90%;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+.modal p {
+  font-size: 2rem;
+  padding: 2rem;
+}
+.modal i{
+  color: rgb(33, 155, 39);
+  font-size: 4rem;
+}
+#modal-close {
+  padding: 1.5rem;
+  cursor: pointer;
+  width: 50%;
+  margin: 2rem;
+  border-radius: 6px;
+  background-color: #000;
+  color: #fff;
+  text-transform: uppercase;
+  border: none;
+  font-size: 1.4rem;
+}
+#modal-close:hover {
+  background-color: rgb(33, 155, 39);
+}
 
 @media only screen and (max-width: 768px) {
   .navbar ul a{

@@ -195,6 +195,20 @@ closeForm.addEventListener('click', (e) => {
   form.classList.remove('form-show');
 })
 
+//Utilizo jquery para abrir un modal cuando el usuario agregue un producto al carrito
+$(".agregarProducto").click((e)=> {
+  e.preventDefault();
+  $(".modal").css({"opacity": 1,
+                   "pointer-events": "unset"});
+})
+
+// Utilizo jquery para cerrar el modal cuando el usuario da click en aceptar
+$("#modal-close").click((e)=> {
+  e.preventDefault();
+  $(".modal").css({"opacity": 0,
+                   "pointer-events": "none"});
+})
+
 
 // VALIDO EL FORMULARIO, Y MUESTRO UN MENSAJE SEGÚN SI EL USUARIO ES MAYOR O MENOR DE EDAD
 
@@ -257,7 +271,7 @@ function guardarUsuario (usuario){
   })
 }
 guardarUsuario ();
-  
+
 }
 })
 })
