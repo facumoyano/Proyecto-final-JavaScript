@@ -225,7 +225,18 @@ main {
   font-size: 1.6rem;
 }
 .shoppingCartItemQuantity {
-  width: 4rem;
+  width: 6rem;
+  margin: 1rem;
+  font-weight: 700;
+}
+.buttonDelete {
+  padding: 1rem;
+  font-weight: 700;
+  border-radius: 6px;
+  background-color: rgb(196, 6, 6);
+  color: #fff;
+  border: none;
+  cursor: pointer;
 }
 .contenedorTotal {
   font-size: 1.4rem;
@@ -265,7 +276,7 @@ main {
   border: none;
 }
 /* Form */
-.form {
+.form{
   position: fixed;
   top: 0;
   left: 0;
@@ -333,6 +344,7 @@ input {
   border: 1px solid grey;
   border-radius: 10px;
 }
+
 
 @media only screen and (max-width: 768px) {
   .navbar ul a{

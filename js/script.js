@@ -91,7 +91,7 @@ function addProductToShop(itemTitle, itemPrice, itemImage) {
                 class="shopping-cart-quantity d-flex justify-content-between align-items-center h-100 border-bottom pb-2 pt-3">
                 <input class="shopping-cart-quantity-input shoppingCartItemQuantity" type="number"
                     value="1">
-                <button class="btn btn-danger buttonDelete" type="button">X</button>
+                <button class=" buttonDelete" type="button">X</button>
             </div>
             
         </div>
@@ -154,10 +154,12 @@ $('#cerrarCarrito').click(function(e) {
 const openForm = document.querySelector("#openForm");
 const form = document.querySelector(".form");
 const closeForm = document.querySelector(".form-close");
+const closeModal = document.querySelector("#cerrar-modal");
+const modal = document.querySelector(".modal-contenedor");
 
 
-
-
+  
+    
 
 openForm.addEventListener('click', (e) => {
   e.preventDefault();
