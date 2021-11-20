@@ -220,6 +220,7 @@ main {
 .shopping-cart-item-title{
   font-size: 1.6rem;
   margin-left: 1rem;
+  margin-top: 2rem;
 }
 .shoppingCartItemPrice {
   font-size: 1.6rem;
@@ -271,9 +272,14 @@ main {
   padding: 1rem;
   font-size: 1.6rem;
   font-weight: 700;
-  border-radius: 10px;
+  border-radius: 8px;
   background-color: #fff;
   border: none;
+  cursor: pointer;
+}
+.comprarButton:hover {
+background-color: rgb(33, 155, 39);
+color: #fff;
 }
 /* Form */
 .form{
@@ -324,6 +330,9 @@ input {
   font-size: 1.6rem;
   cursor: pointer;
 }
+.form-close:hover {
+  color: red;
+}
 .form-msj {
   font-weight: 600;
   font-size: 1.8rem;
@@ -343,6 +352,11 @@ input {
   background-color: #fff;
   border: 1px solid grey;
   border-radius: 10px;
+  cursor: pointer;
+}
+#btn-form:hover {
+  background-color: #000;
+  color: #fff;
 }
 
 /* Modal */
@@ -372,6 +386,7 @@ input {
   padding: 2rem;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 .modal p {
   font-size: 2rem;
@@ -384,7 +399,7 @@ input {
 #modal-close {
   padding: 1.5rem;
   cursor: pointer;
-  width: 50%;
+  width: 60%;
   margin: 2rem;
   border-radius: 6px;
   background-color: #000;

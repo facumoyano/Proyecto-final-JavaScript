@@ -100,26 +100,26 @@ function addProductToShop(itemTitle, itemPrice, itemImage) {
   const addElements = document.createElement('div');
   const contenidoProducto = `
   <div class="row shoppingCartItem">
-        <div class="col-6">
-            <div class="shopping-cart-item d-flex align-items-center h-100 border-bottom pb-2 pt-3">
+        
+            <div class="shopping-cart-item">
                 <img src=${itemImage} class="shopping-cart-image">
-                <h6 class="shopping-cart-item-title shoppingCartItemTitle text-truncate ml-3 mb-0">${itemTitle}</h6>
+                <h6 class="shopping-cart-item-title shoppingCartItemTitle">${itemTitle}</h6>
             </div>
-        </div>
-        <div class="col-2">
-            <div class="shopping-cart-price d-flex align-items-center h-100 border-bottom pb-2 pt-3">
-                <p class="item-price mb-0 shoppingCartItemPrice">${itemPrice}</p>
+        
+        
+            <div class="shopping-cart-price">
+                <p class="item-price  shoppingCartItemPrice">${itemPrice}</p>
             </div>
-        </div>
-        <div class="col-4">
+        
+        
             <div
-                class="shopping-cart-quantity d-flex justify-content-between align-items-center h-100 border-bottom pb-2 pt-3">
-                <input class="shopping-cart-quantity-input shoppingCartItemQuantity" type="number"
+                class="shopping-cart-quantity">
+                <input class="shoppingCartItemQuantity" type="number"
                     value="1">
-                <button class=" buttonDelete" type="button">X</button>
+                <button class="buttonDelete" type="button">X</button>
             </div>
             
-        </div>
+        
         
     </div>`;
   addElements.innerHTML = contenidoProducto;
