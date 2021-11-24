@@ -336,15 +336,10 @@ input {
 .form-msj {
   font-weight: 600;
   font-size: 1.8rem;
-  color: rgb(53, 148, 34);
+  color: #000;
   padding-top: 1.2rem;
 }
-.form-msj-negativo {
-  font-weight: 600;
-  font-size: 1.4rem;
-  color: rgb(211, 11, 11);
-  padding-top: 1.2rem;
-}
+
 #btn-form {
   padding: 1rem;
   font-size: 1.6rem;
