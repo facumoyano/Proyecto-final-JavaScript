@@ -407,6 +407,58 @@ input {
   background-color: rgb(33, 155, 39);
 }
 
+.alert{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #111111bd;
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transition: .6s;
+
+  
+}
+.alert-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90%;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 2rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.alert p {
+  font-size: 2rem;
+  padding: 2rem;
+}
+.alert i{
+  color: #a5292a;
+  font-size: 4rem;
+}
+#alert-close {
+  padding: 1.5rem;
+  cursor: pointer;
+  width: 60%;
+  margin: 2rem;
+  border-radius: 6px;
+  background-color: #000;
+  color: #fff;
+  text-transform: uppercase;
+  border: none;
+  font-size: 1.4rem;
+}
+#alert-close:hover {
+  background-color: #a5292a;
+}
+
 @media only screen and (max-width: 768px) {
   .navbar ul a{
     font-size: 2rem;

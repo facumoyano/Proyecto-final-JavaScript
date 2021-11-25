@@ -192,18 +192,6 @@ $(document).ready(() => {
         $("#sidebar").css("right", "-100%");
       });
 
-      //Si el total del carrito es igual a 0, muestro una alerta, sino se abre el formulario para finalizar la compra
-      openForm.addEventListener("click", (e) => {
-        total = actualizarTotalCarrito();
-        e.preventDefault();
-        if (total != 0) {
-          form.classList.add("form-show");
-        } else {
-          alert("No ingresaste ningún producto");
-          return false;
-        }
-      });
-
       //función para cerrar el formulario
       closeForm.addEventListener("click", (e) => {
         e.preventDefault();
@@ -222,6 +210,23 @@ $(document).ready(() => {
         $(".modal").css({ opacity: 0, "pointer-events": "none" });
       });
 
+      // Si al hacer click en comprar el total es igual a 0, aparece un modal de alerta, sino aparece el form para finalizar la compra
+      $("#openForm").click((e) => {
+        total = actualizarTotalCarrito();
+        e.preventDefault();
+        if(total == 0) {
+          $(".alert").css({ opacity: 1, "pointer-events": "unset" });
+        }else {
+          $("#formulario").addClass("form-show");
+        }
+      })
+
+      //Función para cerrar el modal mencionado arriba
+      $("#alert-close").click((e) => {
+        e.preventDefault();
+        $(".alert").css({ opacity: 0, "pointer-events": "none" });
+      })
+
       // VALIDO EL FORMULARIO, Y MUESTRO UN MENSAJE SEGÚN SI EL USUARIO ES MAYOR O MENOR DE EDAD
 
       function validarForm() {
@@ -231,7 +236,7 @@ $(document).ready(() => {
         btnForm.addEventListener("click", function (e) {
           e.preventDefault();
           if (nombre.value === "") {
-            alert("Ingresa tu nombre");
+            alert("Ingresa un nombre");
             nombre.focus();
             return false;
           } else if (email.value === "") {
@@ -250,6 +255,7 @@ $(document).ready(() => {
           const precioTotal = document.querySelector(".shoppingCartTotal");
           contenedorProductos.innerHTML = "";
           precioTotal.innerHTML = "$0";
+          
         });
       }
 
