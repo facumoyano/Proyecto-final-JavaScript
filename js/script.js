@@ -5,6 +5,7 @@ let email = document.getElementById("form-email");
 let mayor = document.getElementById("form-check");
 let btnForm = document.getElementById("btn-form");
 let formulario = document.getElementById("form");
+let formPadre = document.getElementById("formulario");
 const contenedorProductos = document.querySelector(
   ".shoppingCartItemsContainer"
 );
@@ -13,6 +14,7 @@ const form = document.querySelector(".form");
 const closeForm = document.querySelector(".form-close");
 const closeModal = document.querySelector("#cerrar-modal");
 const modal = document.querySelector(".modal-contenedor");
+const er = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 //Creo mis cards de forma dinámica mediante AJAX llamando a un json local.
 
@@ -56,13 +58,6 @@ $(document).ready(() => {
       agregarProductoBoton.forEach((addBtn) => {
         addBtn.addEventListener("click", datosCard);
       });
-
-      // Selecciono el botón de compra de carrito y luego llamo a la función validarForm
-
-      const comprarButton = document.querySelector(".comprarButton");
-      comprarButton.addEventListener("click", validarForm);
-
-      //Función que lee el contenido de las cards para luego usar la información obtenida en el carrito
 
       function datosCard(event) {
         const button = event.target;
@@ -227,36 +222,119 @@ $(document).ready(() => {
         $(".alert").css({ opacity: 0, "pointer-events": "none" });
       })
 
-      // VALIDO EL FORMULARIO, Y MUESTRO UN MENSAJE SEGÚN SI EL USUARIO ES MAYOR O MENOR DE EDAD
 
-      function validarForm() {
-        total = actualizarTotalCarrito();
-        let formMensaje = document.getElementById("form-mensaje");
+      // Llamo a la función que llama a todas las funciones del formulario
+      eventListenersForm();
 
-        btnForm.addEventListener("click", function (e) {
-          e.preventDefault();
-          if (nombre.value === "") {
-            alert("Ingresa un nombre");
-            nombre.focus();
-            return false;
-          } else if (email.value === "") {
-            alert("Ingresa un email");
-            email.focus();
-            return false;
-          } else if (mayor.checked) {
-            formMensaje.classList.add("form-msj");
-            formMensaje.innerHTML = `<div>Gracias por tu compra ${nombre.value}, el total de tu compra es: $${total}</div>`;
-          } else {
-            formMensaje.classList.add("form-msj");
-            formMensaje.innerHTML = `<div>No eres mayor de edad</div>`;
+      //Función que llama a todas las funciones del formulario.
+      function eventListenersForm() {
+        
+        nombre.addEventListener("blur", validarFormulario);
+        email.addEventListener("blur", validarFormulario);
+        mayor.addEventListener("change", validarFormulario);
+        btnForm.addEventListener("click", enviarEmail);
+  }
+
+  // Función para validar el formulario
+
+      function validarFormulario(e) {
+        // Si los campos tienen al menos un valor se agrega un borde verde al input, si no, se muestra un mensaje y se agrega un borde rojo al input
+        if(e.target.value.length > 0) {
+          const error = document.querySelector('p.error');
+          if(error){
+            error.remove();
           }
 
-          //Reseteo los valores del carrito
-          const precioTotal = document.querySelector(".shoppingCartTotal");
+          e.target.classList.remove("border-red");
+          e.target.classList.add("border-green");
+        }else {
+          e.target.classList.remove("border-green");
+          e.target.classList.add("border-red");
+
+          mostrarError("Todos los campos son obligatorios");
+        }
+
+        //Valido el mail
+        if(e.target.type === "email"){
+
+          if(er.test(e.target.value)){
+            const error = document.querySelector('p.error');
+            if(error){
+              error.remove();
+            }
+      
+            e.target.classList.remove("border-red");
+            e.target.classList.add("border-green");
+          }else {
+            e.target.classList.remove("border-green");
+            e.target.classList.add("border-red");
+
+            mostrarError("Email no válido");
+          }
+        }
+        //Si el email es válido y el nombre distinto a vacío y el usuario es mayor de edad, entonces se habilita el botón de enviar, si no, se desabilita
+        if(er.test(email.value) && nombre.value !== '' && mayor.checked) {
+          btnForm.style.opacity = "1";
+          btnForm.disabled = false;
+          btnForm.style.cursor = "pointer";
+
+        }else {
+          btnForm.style.opacity = "0.5";
+          btnForm.disabled = true;
+          btnForm.style.cursor = "no-drop";
+        }
+      }
+
+      // Función para mostrar mensaje
+      function mostrarError(mensaje) {
+        const mensajeError = document.createElement("p");
+        mensajeError.textContent = mensaje;
+        mensajeError.classList.add("border-red", "mensaje-error", "error");
+
+        const errores = document.querySelectorAll(".error");
+        if(errores.length === 0){
+          formulario.appendChild(mensajeError);
+        }
+
+      }
+
+      // Función para enviar email si todos los campos han sido validados y el usuario da click en enviar
+      function enviarEmail(e) {
+        e.preventDefault();
+        total = actualizarTotalCarrito();
+        
+        // Se muestra una animación
+        const spinner = document.querySelector("#spinner");
+        spinner.style.display = "flex"
+
+        //Despues de tres segundos, la animación se esconde y se muestra un mensaje de compra finalizada
+        setTimeout(() => {
+          spinner.style.display = "none";
+
+          const parrafo = document.createElement('p');
+          parrafo.textContent = `Gracias por tu compra ${nombre.value}, el total de tu compra es: $${total}`;
+          parrafo.classList.add("border-green", "mensaje-error")
+
+          formulario.insertBefore(parrafo, spinner);
+          
+
+      //Después de 5 segundos se resetan los campos del formulario, el mensaje de compra finalizada y se resetea el carrito de compras
+      setTimeout(() => {
+        parrafo.remove();
+        resetearForm();
+        const precioTotal = document.querySelector(".shoppingCartTotal");
           contenedorProductos.innerHTML = "";
           precioTotal.innerHTML = "$0";
-          
-        });
+      }, 5000)
+    }, 3000)
+  }
+
+  // Función que resetea el formulario y deja el botón de enviar desabilitado
+      function resetearForm() {
+        formPadre.reset();
+        btnForm.style.opacity = "0.5";
+        btnForm.style.cursor = "no-drop";
+        btnForm.disabled = true;
       }
 
       //GUARDO EL CLIENTE INGRESADO EN EL FORMULARIO EN EL LOCALSTORAGE

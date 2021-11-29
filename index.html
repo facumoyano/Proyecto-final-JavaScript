@@ -10,8 +10,9 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Raleway:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="css/spinner.css">
 
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Lorem Wines</title>
   </head>
   <body>
@@ -80,6 +81,7 @@
                           </div>
                           
                       </div>
+                      
                       <button class="comprarButton" type="button"
                           data-target="#comprarModal" id="openForm">Comprar</button>
                   </div>
@@ -101,7 +103,17 @@
         <input type="email" placeholder="Ingresa tu email" required id="form-email"> 
         <label for="">Eres mayor de edad? </label>
         <input type="checkbox" required id="form-check">
-        <button type="button" id="btn-form">Enviar</button>
+        <div  id="spinner">
+          <div class="sk-chase">
+              <div class="sk-chase-dot"></div>
+              <div class="sk-chase-dot"></div>
+              <div class="sk-chase-dot"></div>
+              <div class="sk-chase-dot"></div>
+              <div class="sk-chase-dot"></div>
+              <div class="sk-chase-dot"></div>
+          </div>
+      </div>
+        <button type="submit" id="btn-form">Enviar</button>
         <div id="form-mensaje"></div>
       </div>
     </form>

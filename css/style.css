@@ -38,7 +38,7 @@ html {
   font-size: 2.5rem;
 }
 .fondo {
-  background-image: url("img/red-wine.jpg");
+  background-image: url("../img/red-wine.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -345,15 +345,15 @@ input {
   padding: 1rem;
   font-size: 1.6rem;
   font-weight: 700;
-  background-color: #fff;
-  border: 1px solid grey;
+  background-color: #3182ce;
+  border: none;
   border-radius: 10px;
-  cursor: pointer;
-}
-#btn-form:hover {
-  background-color: #000;
+  cursor: no-drop;
   color: #fff;
+  opacity: 0.5;
 }
+
+
 
 /* Modal */
 .modal{
@@ -458,6 +458,20 @@ input {
 }
 #alert-close:hover {
   background-color: #a5292a;
+}
+.border-red {
+  border: 1px solid rgb(243, 0, 0);
+}
+.border-green {
+  border: 1px solid rgb(47, 173, 47);
+}
+.mensaje-error {
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-top: 15px;
 }
 
 @media only screen and (max-width: 768px) {
