@@ -280,6 +280,7 @@ $(document).ready(() => {
           
           btnForm.addEventListener('click', () => {
             enviarEmail(); 
+            return;
           })
 
         }else {
@@ -318,10 +319,14 @@ $(document).ready(() => {
           spinner.style.display = "none";
 
           const parrafo = document.createElement('p');
-          parrafo.textContent = `Gracias por tu compra ${nombre.value}, el total de tu compra es: $${total}`;
-          parrafo.classList.add("border-green", "mensaje-error")
+          const exito = document.querySelector(".exito")
+          if(!exito) {
+            parrafo.textContent = `Gracias por tu compra ${nombre.value}, el total de tu compra es: $${total}`;
+            parrafo.classList.add("border-green", "mensaje-error", "exito")
 
           formulario.insertBefore(parrafo, spinner);
+          }
+          
           
 
       //Después de 5 segundos se resetan los campos del formulario, el mensaje de compra finalizada y se resetea el carrito de compras
