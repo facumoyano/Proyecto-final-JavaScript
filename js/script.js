@@ -205,16 +205,7 @@ $(document).ready(() => {
         $(".modal").css({ opacity: 0, "pointer-events": "none" });
       });
 
-      // Si al hacer click en comprar el total es igual a 0, aparece un modal de alerta, sino aparece el form para finalizar la compra
-      $("#openForm").click((e) => {
-        total = actualizarTotalCarrito();
-        e.preventDefault();
-        if(total == 0) {
-          $(".alert").css({ opacity: 1, "pointer-events": "unset" });
-        }else {
-          $("#formulario").addClass("form-show");
-        }
-      })
+      
 
       //Función para cerrar el modal mencionado arriba
       $("#alert-close").click((e) => {
@@ -232,7 +223,7 @@ $(document).ready(() => {
         nombre.addEventListener("blur", validarFormulario);
         email.addEventListener("blur", validarFormulario);
         mayor.addEventListener("change", validarFormulario);
-        btnForm.addEventListener("click", enviarEmail);
+        btnForm.addEventListener("click", validarFormulario);
   }
 
   // Función para validar el formulario
@@ -252,8 +243,10 @@ $(document).ready(() => {
           e.target.classList.add("border-red");
 
           mostrarError("Todos los campos son obligatorios");
+          
+          
         }
-
+        
         //Valido el mail
         if(e.target.type === "email"){
 
@@ -265,18 +258,29 @@ $(document).ready(() => {
       
             e.target.classList.remove("border-red");
             e.target.classList.add("border-green");
+            
           }else {
             e.target.classList.remove("border-green");
             e.target.classList.add("border-red");
 
             mostrarError("Email no válido");
+            
+            
           }
         }
         //Si el email es válido y el nombre distinto a vacío y el usuario es mayor de edad, entonces se habilita el botón de enviar, si no, se desabilita
         if(er.test(email.value) && nombre.value !== '' && mayor.checked) {
+          const error = document.querySelector('p.error');
+          if(error){
+            error.remove();
+          }
           btnForm.style.opacity = "1";
           btnForm.disabled = false;
           btnForm.style.cursor = "pointer";
+          
+          btnForm.addEventListener('click', () => {
+            enviarEmail(); 
+          })
 
         }else {
           btnForm.style.opacity = "0.5";
@@ -294,13 +298,15 @@ $(document).ready(() => {
         const errores = document.querySelectorAll(".error");
         if(errores.length === 0){
           formulario.appendChild(mensajeError);
+          
         }
+        
 
       }
 
       // Función para enviar email si todos los campos han sido validados y el usuario da click en enviar
-      function enviarEmail(e) {
-        e.preventDefault();
+      function enviarEmail() {
+        
         total = actualizarTotalCarrito();
         
         // Se muestra una animación
@@ -336,6 +342,17 @@ $(document).ready(() => {
         btnForm.style.cursor = "no-drop";
         btnForm.disabled = true;
       }
+
+      // Si al hacer click en comprar el total es igual a 0, aparece un modal de alerta, sino aparece el form para finalizar la compra
+      $("#openForm").click((e) => {
+        total = actualizarTotalCarrito();
+        e.preventDefault();
+        if(total == 0) {
+          $(".alert").css({ opacity: 1, "pointer-events": "unset" });
+        }else {
+          $("#formulario").addClass("form-show");
+        }
+      })
 
       //GUARDO EL CLIENTE INGRESADO EN EL FORMULARIO EN EL LOCALSTORAGE
 
